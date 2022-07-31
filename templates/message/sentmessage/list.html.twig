@@ -5,10 +5,9 @@
 {% block body %}
     <ul>
         {% for sent_message in sent_messages %}
-            <li>
-                <p> Topic: {{ sent_message.topic }} </p>
-                <p> Text: {{ sent_message.text }} </p>
-                <p> Recipient: {{ sent_message.recipient.name }} {{ sent_message.recipient.surname }} </p>
+            <li style="background: {{ sent_message.color }}">
+                {% include 'message/_partial.html.twig' %}
+                <p><a href="{{ path('sentmessages_update', { 'id' : sent_message.id }) }}"> Update message </a></p>
             </li>
         {% endfor %}
     </ul>
