@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Message {% endblock %}
+
+{% block body %}
+    <input id="color" type="button" value="Change color textarea">
+    {{ form(form) }}
+
+    <p><a href="{{ path('user_profile') }}">Profile</a></p>
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+        let textArea = document.querySelector('.message_text');
+        {% if color is defined and color is not null %}
+        textArea.style.background = '{{ color }}';
+        {% endif %}
+        let button = document.getElementById('color');
+        let color = document.querySelector('.message_color');
+        let colors = ['red', 'green', 'blue', 'yellow'];
+        let i = 0;
+        button.addEventListener('click', function changeColor() {
+            textArea.style.background = color.value = colors[i++];
+            if (i > colors.length - 1 ) {
+                i = 0;
+            }
+        });
+    </script>
+{% endblock %}

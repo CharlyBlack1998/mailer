@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %} Registration {% endblock %}
+
+{% block body %}
+    <p style="text-align: right">
+        <a href="{{ path('user_login') }}">Login</a>
+    </p>
+    <h3>Registration</h3>
+    {{ form_start(form) }}
+
+    {{ form_end(form) }}
+{% endblock %}

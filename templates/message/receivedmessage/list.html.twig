@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} List sent messages {% endblock %}
+{% block title %} List received messages {% endblock %}
 
 {% block body %}
     <ul>
-        {% for sent_message in sent_messages %}
-            <li>
-                <p> Topic: {{ sent_message.topic }} </p>
-                <p> Text: {{ sent_message.text }} </p>
-                <p> Recipient: {{ sent_message.recipient.name }} {{ sent_message.recipient.surname }} </p>
+        {% for received_message in received_messages %}
+            <li style="background: {{ received_message.color }}">
+                {% include 'message/_partial.html.twig' with {'sent_message': received_message} %}
             </li>
         {% endfor %}
     </ul>
